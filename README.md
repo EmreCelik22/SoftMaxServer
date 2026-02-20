@@ -16,18 +16,11 @@ Dağıtık sistemlerde sunucuların yanıt süreleri sabit değildir. Ağ yoğun
 
 
 ### 1. Softmax Olasılık Hesaplaması ve Nümerik Stabilite
-Her bir sunucunun seçilme olasılığı Softmax fonksiyonu ile hesaplanır. Ancak $e^x$ (üstel) fonksiyonu bilgisayar hafızasında hızlıca büyüyeceği için (Overflow/NaN hatası), **Nümerik Stabilite** sağlanmıştır. En büyük $Q$ değeri, işleme girmeden önce tüm değerlerden çıkarılır:
-
-$$P_i = \frac{e^{(Q_i - Q_{max}) / \tau}}{\sum_{j=1}^K e^{(Q_j - Q_{max}) / \tau}}$$
-
-*(Burada $\tau$, sistemin keşif miktarını belirleyen sıcaklık parametresidir.)*
+Her bir sunucunun seçilme olasılığı Softmax fonksiyonu ile hesaplanır. Ancak $e^x$ (üstel) fonksiyonu bilgisayar hafızasında hızlıca büyüyeceği için (Overflow/NaN hatası), **Nümerik Stabilite** sağlanmıştır. En büyük $Q$ değeri, işleme girmeden önce tüm değerlerden çıkarılır.
 
 ### 2. Sabit Adım Boyu (Constant Step-Size) Güncellemesi
-Ortam "Non-stationary" (zamanla değişen) olduğu için, eski verilerin ağırlığını zamanla azaltıp yeni tecrübelere odaklanmak amacıyla basit ortalama yerine Sabit Öğrenme Oranı ($\alpha$) kullanılmıştır:
+Ortam "Non-stationary" (zamanla değişen) olduğu için, eski verilerin ağırlığını zamanla azaltıp yeni tecrübelere odaklanmak amacıyla basit ortalama yerine Sabit Öğrenme Oranı alpha kullanılmıştır.
 
-$$Q_{yeni} = Q_{eski} + \alpha \times (R - Q_{eski})$$
-
-*(Ödül ($R$), sistemdeki gecikme süresinin negatifidir. Amacımız gecikmeyi düşürmektir.)*
 
 ##  Zaman Karmaşıklığı (Runtime Analysis)
 
