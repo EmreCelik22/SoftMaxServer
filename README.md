@@ -41,6 +41,3 @@ Sisteme gelen tek bir isteğin işlenme maliyeti son derece düşüktür ve ger�
 
 Projenin çalışması için bilgisayarınızda Java yüklü olması yeterlidir. Herhangi bir harici kütüphane (dependency) gerektirmez.
 
-1. Repoyu bilgisayarınıza klonlayın:
-   ```bash
-   git clone [https://github.com/kullaniciadiniz/softmax-load-balancer.git](https://github.com/kullaniciadiniz/softmax-load-balancer.git)
